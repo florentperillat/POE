@@ -2,7 +2,7 @@ package tp;
 public class NombresPremiersTableau {
 
     public static void main(String[] args) {
-        int[] tab = {1, 9, 31, 3, 4, 11, 341, 527, 1603};
+        int[] tab = {1, 9, 31, 3, 4, 11, 341, 527, 1603}; //tableau d'entiers
         affiche(tab);
         System.out.println("Nombres premiers : ");
         affiche(NombresPremiers(tab));
