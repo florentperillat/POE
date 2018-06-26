@@ -18,7 +18,10 @@ public class Collections {
         System.out.println("Sum List = " + sumList(list2));
         System.out.println("Max List = " + maxList(list2));
         System.out.println("Min List = " + minList(list2));
+        System.out.println("Prime numbers = ");
         afficheList(getPrimeNumbList(list2));
+        System.out.println("Inverted list = ");
+        afficheList(inverse(list2));
 
    // TP     Fonctions Somme, Min, Max, Moyenne, getPrimeNumbers, inverse, refaire inverse sans créer une nouvelle liste
 }
@@ -75,6 +78,15 @@ public class Collections {
             }
             prime = true;
         }
+        return result;
+    }
+
+
+    public static ArrayList<Integer> inverse(ArrayList<Integer> list) {
+        ArrayList<Integer> result = new ArrayList<>();
+            for(int i = list.size() -1; i>=0; i--){
+                result.add(list.get(i));
+            }
         return result;
     }
 }
