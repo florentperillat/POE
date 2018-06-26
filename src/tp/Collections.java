@@ -84,9 +84,21 @@ public class Collections {
 
     public static ArrayList<Integer> inverse(ArrayList<Integer> list) {
         ArrayList<Integer> result = new ArrayList<>();
-            for(int i = list.size() -1; i>=0; i--){
-                result.add(list.get(i));
-            }
+        for(int i = list.size() -1; i>=0; i--){
+            result.add(list.get(i));
+        }
         return result;
     }
+
+    public static ArrayList<Integer> inverseWithoutList(ArrayList<Integer> list) {
+        Integer temp;
+        for(int i = list.size() - 2; i>=0; i--){
+            temp = list.get(i);
+            list.remove(i);
+            list.add(i);
+        }
+        return list;
+    }
+
+
 }
