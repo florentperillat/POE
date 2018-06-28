@@ -4,8 +4,8 @@ public class Program {
 
    public static void main(String[] args) {
        Point p1 = new Point();
-       p1.x = 5;
-       p1.y = -2;
+       p1.setX(5);
+       p1.setY(-2);
        p1.display();
        p1.moveTo(3,2);
        p1.display();

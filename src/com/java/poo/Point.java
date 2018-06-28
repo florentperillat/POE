@@ -3,39 +3,55 @@ package com.java.poo;
 public class Point {
 
     // attributs
-    double x;
-    double y;
+    private double x;
+    private double y;
 
     // méthodes, actions
 
     Point () {
-        this.x = 0;
-        this.y = 0;
+        this.setX(0);
+        this.setY(0);
     }
 
-    Point(double x, double y){
-        this.x = x;
-        this.y = y;
+    Point(double x, double y) {
+        this.setX(x);
+        this.setY(y);
     }
 
     void moveTo(double x, double y){ //absolute
-        this.x = x; //ambiguité donc on rajoute un "this."
-        this.y = y; //pour différencier l'attribut de l'objet et le paramètre de la méthode
+        this.setX(x); //ambiguité donc on rajoute un "this."
+        this.setY(y); //pour différencier l'attribut de l'objet et le paramètre de la méthode
     }
 
     void display(){ //String toString() existe et c'est une méthode de l'objet
-        System.out.println("(" + x + ","+ y + ")");
+        System.out.println("(" + getX() + ","+ getY() + ")");
     }
 
     void moveRelative(double x, double y) { //relative
-        this.x += x;
-        this.y += y;
+        this.setX(this.getX() + x);
+        this.setY(this.getY() + y);
     }
 
     void moveRelative(Point p){
-        this.x += p.x;
-        this.y += p.y;
+        this.setX(this.getX() + p.getX());
+        this.setY(this.getY() + p.getY());
 
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
     }
 }
 

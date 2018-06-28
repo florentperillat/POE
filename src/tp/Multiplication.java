@@ -83,29 +83,47 @@ public class Multiplication {
 
 
 
-    public int sum(int[] tab) {
+    public static int sum_recursive(int[] tab, int n) {
 
-        int res = 0;
+        if (n == 1) {
 
-        for(int i:tab) {
-
-            res+=i;
+            return tab[0];
 
         }
 
-        return res;
+        else {
+
+            return tab[n-1] + multiplier_recursif(tab, n-1);
+
+        }
 
     }
 
 
 
-    public int max(int[] tab) {
+    public static int max_recursive(int[] tab, int n) {
+
+        if (n == 1) {
+
+            return tab[0];
+
+        }
+
+        else {
+
+            return tab[n-1] * multiplier_recursif(tab, n-1);
+
+        }
+
+    }
+
+    public int min(int[] tab) {
 
         int res = tab[0];
 
         for(int i:tab) {
 
-            if(i > res) {
+            if(i < res) {
 
                 res = i;
 

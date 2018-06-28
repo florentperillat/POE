@@ -18,10 +18,11 @@ public class Collections {
         System.out.println("Sum List = " + sumList(list2));
         System.out.println("Max List = " + maxList(list2));
         System.out.println("Min List = " + minList(list2));
-        System.out.println("Prime numbers = ");
+        System.out.println("Moy List = " + moyList(list2));
+        System.out.println("Prime numbers : ");
         afficheList(getPrimeNumbList(list2));
-        System.out.println("Inverted list = ");
-        afficheList(inverse(list2));
+        System.out.println("Inverted list : ");
+        afficheList(inverseWithoutList(list2));
 
    // TP     Fonctions Somme, Min, Max, Moyenne, getPrimeNumbers, inverse, refaire inverse sans créer une nouvelle liste
 }
@@ -42,24 +43,24 @@ public class Collections {
 
     public static int minList(ArrayList<Integer> list) {
         int min = list.get(0).intValue();
-        for (Integer i :list) {
-            if (i.intValue()<min) {
-                min = i.intValue();
+        for (int i :list) {
+            if (i<min) {
+                min = i;
             }
         }
         return min;
     }
     public static int maxList(ArrayList<Integer> list) {
         int max = list.get(0).intValue();
-        for (Integer i :list) {
-            if (i.intValue()>max) {
-                max = i.intValue();
+        for (int i :list) {
+            if (i>max) {
+                max = i;
             }
         }
         return max;
     }
-    public static int moyList(ArrayList<Integer> list) {
-        int moy = sumList(list)/list.size();
+    public static double moyList(ArrayList<Integer> list) {
+        double moy = (double)sumList(list)/list.size();
         return moy;
     }
 
@@ -82,20 +83,18 @@ public class Collections {
     }
 
 
-    public static ArrayList<Integer> inverse(ArrayList<Integer> list) {
-        ArrayList<Integer> result = new ArrayList<>();
-        for(int i = list.size() -1; i>=0; i--){
-            result.add(list.get(i));
+        public static ArrayList<Integer> inverse(ArrayList<Integer> list) {
+            ArrayList<Integer> result = new ArrayList<>();
+            for(int i = list.size() -1; i>=0; i--){
+                result.add(list.get(i));
+            }
+            return result;
         }
-        return result;
-    }
 
-    public static ArrayList<Integer> inverseWithoutList(ArrayList<Integer> list) {
-        Integer temp;
-        for(int i = list.size() - 2; i>=0; i--){
-            temp = list.get(i);
-            list.remove(i);
+        public static ArrayList<Integer> inverseWithoutList(ArrayList<Integer> list) {
+        for(int i = list.size() -2; i>0; i--){
             list.add(i);
+            list.remove(i);
         }
         return list;
     }
