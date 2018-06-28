@@ -14,24 +14,24 @@ public class Nucleotide {
                 this.setFamily("Purine");
                 break;
             case 'C':
-                this.setName("Guanine");
+                this.setName("Cytosine");
                 this.setFamily("Pyrimidine");
-                this.setComplementaire(new Nucleotide('G'));
                 break;
             case 'T':
-                this.setName("Cytosine");
+                this.setName("Thymine");
                 this.setFamily("Purine");
                 this.setComplementaire(new Nucleotide('A'));
                 break;
             case 'G':
                 this.setName("Guanine");
                 this.setFamily("Pyrimidine");
-                this.setComplementaire(new Nucleotide('C'));
                 break;
             case 'U':
                 this.setName("Uracil");
                 this.setFamily("Pyrimidine");
                 this.setComplementaire(new Nucleotide('A'));
+                break;
+            default :
                 break;
         }
     }
@@ -40,7 +40,6 @@ public class Nucleotide {
         System.out.println(this.getSymbol());
         System.out.println(this.getName());
         System.out.println(this.getFamily());
-        System.out.println(this.getComplementaire());
     }
 
     public String getName() {
@@ -71,7 +70,7 @@ public class Nucleotide {
         return complementaire;
     }
 
-    private void setComplementaire(Nucleotide apparie) {
-        this.complementaire = apparie;
+    private void setComplementaire(Nucleotide comp) {
+        this.complementaire = comp;
     }
 }

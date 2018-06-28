@@ -6,18 +6,30 @@ public class DNA {
     private ArrayList<Nucleotide> brin = new ArrayList<>();
 
     public DNA () {
+    }
 
+    public DNA (String brin) {
+        for(char c:brin.toCharArray()){
+            this.brin.add(new Nucleotide(c));
+        }
     }
 
     public void add (Nucleotide n) {
         this.getBrin().add(n);
     }
 
-    public Nucleotide apparie (Nucleotide n) {
-        if(n.getSymbol() =='A'){
-            return new Nucleotide('T');
-        } else {
-            return new Nucleotide(n.getComplementaire().getSymbol());
+    public String brinToString(){
+        String result = "";
+        for(Nucleotide n:getBrin()) {
+            result += n.getSymbol();
+        }
+        return result;
+    }
+
+
+    public void brinDisplay(){
+        for(Nucleotide n:getBrin()) {
+            n.display();
         }
     }
 
@@ -32,9 +44,29 @@ public class DNA {
         String result = "";
         for(Nucleotide n:getBrin()) {
             if(n.getSymbol()=='A') {
-                result += 'U';
+                result += 'T';
+            } else if(n.getSymbol()=='C') {
+                result += 'G';
+            } else if(n.getSymbol()=='G') {
+                result += 'C';
             } else {
-                result += n.getComplementaire();
+                result += n.getComplementaire().getSymbol();
+            }
+        }
+        return result;
+    }
+
+    public String rnaString(){
+        String result = "";
+        for(Nucleotide n:getBrin()) {
+            if(n.getSymbol()=='A') {
+                result += 'U';
+            } else if(n.getSymbol()=='C') {
+                result += 'G';
+            } else if(n.getSymbol()=='G') {
+                result += 'C';
+            } else {
+                result += n.getComplementaire().getSymbol();
             }
         }
         return result;
@@ -42,9 +74,5 @@ public class DNA {
 
     public ArrayList<Nucleotide> getBrin() {
         return brin;
-    }
-
-    private void setBrin(ArrayList<Nucleotide> brin) {
-        this.brin = brin;
     }
 }
