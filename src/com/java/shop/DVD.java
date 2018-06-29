@@ -14,7 +14,7 @@ public class DVD extends Media {
     }
     @Override
     public double getNetPrice(){
-        return super.getNetPrice()*0.8;
+        return (double)(((int)(super.getNetPrice()*0.8)*100)/100);
     }
 
     public String getZone() {

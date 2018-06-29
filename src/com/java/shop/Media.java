@@ -1,4 +1,5 @@
 package com.java.shop;
+import java.text.*;
 
 public class Media {
     private int id;
@@ -27,7 +28,7 @@ public class Media {
     }
 
     public double getNetPrice(){
-        return getPrice() *(100+ getTaux())/100;
+        return (double)((int)(getPrice() *(100+ getTaux()))/100);
     }
 
     public int getId() {
