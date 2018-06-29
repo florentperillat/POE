@@ -1,6 +1,6 @@
 package com.java.shop;
 
-public class programShop {
+public class ProgramShop {
 
     public static void main (String[] args) {
         Media b1 = new Book("BookTitle", "Toto", 15, "Policier", 200, "2015");
