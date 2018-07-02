@@ -2,7 +2,7 @@ package com.java.shop;
 
 import java.util.HashSet;
 
-public class Cart {
+public class Cart implements ICart {
     HashSet<MediaRow> hashset = new HashSet<>();
     double totalPriceTTC;
 
@@ -10,6 +10,7 @@ public class Cart {
 
     }
 
+    @Override
     public void add(Media media, int nb){
         if (hashset.contains(media)){
             for(MediaRow medrow:hashset){
@@ -23,6 +24,7 @@ public class Cart {
         System.out.println(nb + " x " + media.getTitle() + " added to the cart");
     }
 
+    @Override
     public void remove(Media media, int nb){
         if (hashset.contains(media)){
             for(MediaRow medrow:hashset){
@@ -37,6 +39,7 @@ public class Cart {
         System.out.println(nb + " x " + media.getTitle() + " removed from the cart");
     }
 
+    @Override
     public double getTotalPriceTTC() {
         this.totalPriceTTC = 0;
         for (MediaRow media:hashset) {
