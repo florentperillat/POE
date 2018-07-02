@@ -17,5 +17,7 @@ public class ProgramShop {
         cart.add(d1, 2);
         cart.add(c1, 3);
         System.out.println("Total price TTC cart = " + cart.getTotalPriceTTC());
+        cart.remove(d1, 2);
+        System.out.println("Total price TTC cart = " + cart.getTotalPriceTTC());
     }
 }

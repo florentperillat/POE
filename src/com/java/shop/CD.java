@@ -1,6 +1,6 @@
 package com.java.shop;
 
-public class CD extends Media {
+public class CD extends Media implements ICD {
 
     private int nbTrack;
 
@@ -9,6 +9,7 @@ public class CD extends Media {
         this.nbTrack = nbTrack;
     }
 
+    @Override
     public void display(){
         super.display();
         System.out.println(getNbTrack() + " tracks");
@@ -20,6 +21,7 @@ public class CD extends Media {
     }
 
 
+    @Override
     public int getNbTrack() {
         return nbTrack;
     }

@@ -1,7 +1,7 @@
 package com.java.shop;
 
 
-public class Book extends Media {
+public class Book extends Media implements IBook {
 
     private int nbPage;
     private String publicationYear;
@@ -13,6 +13,7 @@ public class Book extends Media {
         this.publicationYear = publicationYear;
     }
 
+    @Override
     public double getNetPrice(){
         return getPrice()*(100+getTaux())/100;
     }
@@ -22,16 +23,19 @@ public class Book extends Media {
         return taux;
     }
 
+    @Override
     public void display() {
         super.display();
         System.out.println(getNbPage() + " pages");
         System.out.println("Published in " + getPublicationYear());
     }
 
+    @Override
     public int getNbPage() {
         return nbPage;
     }
 
+    @Override
     public String getPublicationYear() {
         return publicationYear;
     }
