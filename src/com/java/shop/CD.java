@@ -14,6 +14,12 @@ public class CD extends Media {
         System.out.println(getNbTrack() + " tracks");
     }
 
+    @Override
+    public double getNetPrice() {
+            return (double)((int)(getPrice() *(100+ getTaux()))/100);
+    }
+
+
     public int getNbTrack() {
         return nbTrack;
     }

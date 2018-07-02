@@ -6,7 +6,7 @@ public class Cart {
     ArrayList<MediaCopies> list = new ArrayList<>();
     double totalPriceTTC;
 
-    public Cart(){
+    public Cart(){ //le pannier se construit toujours vide :pas de paramètre dans le constructeur
 
     }
 

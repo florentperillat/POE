@@ -1,7 +1,7 @@
 package com.java.shop;
 import java.util.ArrayList;
 
-public class Media {
+public abstract class Media {
     private int id;
     private String title;
     private double price;
@@ -27,9 +27,7 @@ public class Media {
         System.out.println("Net Price : " + getNetPrice());
     }
 
-    public double getNetPrice(){
-        return (double)((int)(getPrice() *(100+ getTaux()))/100);
-    }
+    public abstract double getNetPrice();
 
     public int getId() {
         return id;

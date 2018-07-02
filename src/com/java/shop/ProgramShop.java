@@ -11,5 +11,11 @@ public class ProgramShop {
         d1.display();
         Media c2 = new CD("CDTitle 2", "tutu", 9, "Chants grégoriens", 30);
         c2.display();
+
+        Cart cart = new Cart();
+        cart.add(b1, 1);
+        cart.add(d1, 2);
+        cart.add(c1, 3);
+        System.out.println("Total price TTC cart = " + cart.getTotalPriceTTC());
     }
 }
