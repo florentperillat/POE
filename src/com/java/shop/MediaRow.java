@@ -2,11 +2,14 @@ package com.java.shop;
 
 public class MediaRow implements IMediaRow {
 
-    Media media;
+    private Media media;
     int nbCopies = 1;
 
-    public MediaRow(Media media, int nb){
+    public MediaRow(Media media, int nb) throws MediaException{
         this.media = media;
+        if (nbCopies<1) {
+            throw new MediaException("Quantity must be 1 or more");
+        }
         this.nbCopies = nb;
     }
 
@@ -24,4 +27,8 @@ public class MediaRow implements IMediaRow {
     }
     @Override
     public void remove(int nb){ this.nbCopies-=nb; }
+
+    public Media getMedia() {
+        return media;
+    }
 }

@@ -74,6 +74,14 @@ title __SHOP's Class Diagram__\n
       }
     }
   }
+    package  {
+       package com.java.shop {
+         class Publisher {
+             - name : String
+             + Publisher()
+         }
+       }
+     }
   
 
   package  {
@@ -220,6 +228,8 @@ title __SHOP's Class Diagram__\n
   MediaRow o-- Media : media
   Cart o-- MediaRow
   Media o-- Author
+  Media --> Publisher
+  Publisher o--> Media
 
 
 

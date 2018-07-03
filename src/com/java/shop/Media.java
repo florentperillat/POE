@@ -1,12 +1,13 @@
 package com.java.shop;
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Media implements IMedia {
     private int id;
     private String title;
     private double price;
     private String genre;
-    private ArrayList<Author> authorList = new ArrayList<>();
+    private List<Author> authorList = new ArrayList<>();
     private int taux = 20;
 
     public Media(String title, String author, double price, String genre) {
@@ -24,7 +25,7 @@ public abstract class Media implements IMedia {
     @Override
     public void display() {
         System.out.println("Article " + getId() + " : " + getTitle());
-        System.out.println("Author : " + authorList);
+        System.out.println("Author : " + authorList.get(0).getFirstName() + " " + authorList.get(0).getName());
         System.out.println("Price : " + getPrice());
         System.out.println("Net Price : " + getNetPrice());
     }

@@ -1,5 +1,7 @@
 package com.java.shop;
 
+import java.awt.*;
+
 public class ProgramShop {
 
     public static void main (String[] args) {
@@ -13,11 +15,15 @@ public class ProgramShop {
         c2.display();
 
         Cart cart = new Cart();
-        cart.add(b1, 1);
-        cart.add(d1, 2);
-        cart.add(c1, 3);
-        System.out.println("Total price TTC cart = " + cart.getTotalPriceTTC());
-        cart.remove(d1, 2);
-        System.out.println("Total price TTC cart = " + cart.getTotalPriceTTC());
+        try {
+            cart.add(b1, 1);
+            cart.add(d1, 2);
+            cart.add(c1, 3);
+            System.out.println("Total price TTC cart = " + cart.getTotalPriceTTC());
+            cart.remove(d1, 2);
+            System.out.println("Total price TTC cart = " + cart.getTotalPriceTTC());
+        } catch (MediaException e) {
+            System.out.println("Exception catch");
+        }
     }
 }
