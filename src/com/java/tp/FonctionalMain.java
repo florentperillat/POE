@@ -33,5 +33,38 @@ public class FonctionalMain {
 
         Stream<Boolean> stream2 = l.stream().map(x->x<10);
         System.out.println(stream2.collect(Collectors.toList()));
+
+        ArrayList<Double> l2 = new ArrayList( Arrays.asList (1.0, 2.0, 3.0, 4.0, 5.0, 11.0, 13.0, 19.0, 20.0, 22.0));
+        List<Double> res2 = new ArrayList<>();
+
+        stream = l2.stream().filter (x -> x%2==0);
+        System.out.println(stream.collect(Collectors.toList()));
+        stream = l2.stream().filter (x -> x%2==0).map(x -> Math.cos(x));
+        System.out.println(stream.collect(Collectors.toList()));
+        stream = l2.stream().filter (x -> isPrime(x.intValue()));
+        System.out.println(stream.collect(Collectors.toList()));
+        stream = l2.stream().filter (x -> isPrime(x.intValue())).map(x->Math.tan(x)).filter(x->x>0);
+        System.out.println(stream.collect(Collectors.toList()));
+
     }
+
+    public static boolean isPrime (int n) {
+        boolean premier = true;
+        for (int i = 2; i<(n^1/2); i++) {
+            if (n%i==0) {
+                    premier = false;
+                    break;
+                }
+            }
+            if (n==1) {
+                premier = false;
+            }
+            return premier;
+        }
 }
+
+// Créer une collection de 10 doubles
+//filtrer les chiffres pairs
+//filtrer les chiffres pairs+appliquer un cosinus
+//filtrer les nombres premiers
+//filtrer les nombres premiers + appliquer une tangente + filtrer les nombres positifs
