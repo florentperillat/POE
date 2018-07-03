@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
 public class FonctionalMain {
@@ -45,6 +46,11 @@ public class FonctionalMain {
         System.out.println(stream.collect(Collectors.toList()));
         stream = l2.stream().filter (x -> isPrime(x.intValue())).map(x->Math.tan(x)).filter(x->x>0);
         System.out.println(stream.collect(Collectors.toList()));
+        stream = l2.stream().filter (x -> x%2==0).map(x->Math.tan(x)).filter(x->x>0);
+        System.out.println(stream.collect(Collectors.toList()));
+
+        System.out.println(l2.stream().mapToDouble (x -> x).reduce(0, (x,y) -> x+y));
+        //f(xy) = x+y avec x=0 et y incrément : 0+1=1; 1+2=3; 3+3=6; 6+4=10; 10+5=15; 15+6=21; 21+7=28...
 
     }
 
