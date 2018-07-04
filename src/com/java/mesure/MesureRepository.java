@@ -74,4 +74,3 @@ public class MesureRepository implements IMesureRepository {
         return(getTimeDifferenceErrorList(delta, getQuadraticList()));
     }
 }
-}
