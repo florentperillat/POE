@@ -10,8 +10,12 @@ public class MesureMain {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(mp.getTheoricalList());
         System.out.println(mp.getMesureList());
         System.out.println(mp.getDifferenceList());
-    }
+        System.out.println(mp.getQuadraticList());
+        System.out.println(mp.getTimeDifferenceErrorList(0.1));
+        System.out.println(mp.getTimeQuatraticErrorList(0.01));
+
+
+}
 }

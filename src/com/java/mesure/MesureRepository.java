@@ -56,11 +56,22 @@ public class MesureRepository implements IMesureRepository {
 
     @Override
     public List<Integer> getTimeDifferenceErrorList(double delta) {
-        return null;
+        return(getTimeDifferenceErrorList(delta, getDifferenceList()));
+    }
+
+    private List<Integer> getTimeDifferenceErrorList(double delta, List<Double> list) {
+        List<Integer> res = new ArrayList<>();
+        for(int i=0;i<list.size();i++) {
+            if(Math.abs(list.get(i)) >= delta) {
+                res.add(i);
+            }
+        }
+        return res;
     }
 
     @Override
     public List<Integer> getTimeQuatraticErrorList(double delta) {
-        return null;
+        return(getTimeDifferenceErrorList(delta, getQuadraticList()));
     }
+}
 }

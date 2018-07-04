@@ -58,7 +58,7 @@ public class BookRepository {
 
     public void addBook (Book book) throws IOException {
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(this.uri));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("excel.csv"));
         writer.newLine();
         writer.write(book.getId()+",");
         writer.write(book.getTitle()+",");
