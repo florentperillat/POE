@@ -1,4 +1,4 @@
-package com.java.mesureRepository;
+package com.java.mesure;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

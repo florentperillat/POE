@@ -1,6 +1,7 @@
 package com.java.shop;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class ProgramShop {
 
@@ -19,11 +20,23 @@ public class ProgramShop {
             cart.add(b1, 1);
             cart.add(d1, 2);
             cart.add(c1, 3);
-            System.out.println("Total price TTC cart = " + cart.getTotalPriceTTC());
+            //System.out.println("Total price TTC cart = " + cart.getTotalPriceTTC());
             cart.remove(d1, 2);
             System.out.println("Total price TTC cart = " + cart.getTotalPriceTTC());
         } catch (MediaException e) {
             System.out.println("Exception catch");
+        }
+
+        BookRepository br = new BookRepository();
+        try {
+            br.load("excel.csv");
+            br.getAll();
+            br.getById(29).display();
+            System.out.println(br.searchByTitle("long"));
+            System.out.println(br.searchByPrice(10));
+            br.addBook(new Book("Zzz", "Moi", 10, "dodo", 20, "2018"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
