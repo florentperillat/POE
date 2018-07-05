@@ -56,15 +56,20 @@ title __GENETIC's Class Diagram__\n
             - peptide : List<AminoAcid>
             + getPeptide() : List<AminoAcid>
     }
+      package com.java.genetic {
+          class Ribosome {
+            + translate(ARN arn) : List<Protein>
+    }
 }
 
   Base o--> "1" Base : apparie
   DNA o--> "*" Base : strand
   DNA o--> "1" RNA : transcription
-  RNA o--> "*" AminoAcid : translation
   Protein o--> "*" AminoAcid
-  Nucleotid <|-- DNA
-  Nucleotid <|-- RNA
+  Nucleotid <|-up- DNA
+  Nucleotid <|-up- RNA
+  Ribosome --> "1" RNA
+  Ribosome --> "*" Protein : translate
 
 
 
