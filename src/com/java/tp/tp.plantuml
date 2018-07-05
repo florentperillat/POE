@@ -21,6 +21,16 @@ title __TP's Class Diagram__\n
 
   package  {
     package com.java.tp {
+      class FonctionalMain {
+          {static} + main()
+          {static} + isPrime()
+      }
+    }
+  }
+  
+
+  package  {
+    package com.java.tp {
       class Multiplication {
           {static} + main()
           {static} + factorielle()

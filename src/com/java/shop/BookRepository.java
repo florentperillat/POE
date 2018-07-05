@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class BookRepository {
@@ -27,6 +28,7 @@ public class BookRepository {
             bookList.add(new Book(title,author, price, "unknown", nbPage, "2018"));
             line = reader.readLine();
         }
+        reader.close();
     }
 
     public void getAll() {
@@ -44,16 +46,25 @@ public class BookRepository {
         return null;
     }
 
-    public Stream<Book> searchByTitle(String title) {
-        Stream<Book> stream;
-        stream = bookList.stream().filter(book -> book.getTitle().contains(title));
-        return stream;
+    public List<Book> searchByTitle(String title) {
+        return bookList
+                .stream()
+                .filter(book -> book
+                        .getTitle()
+                        .toUpperCase()
+                        .contains(title
+                                .toUpperCase()))
+                .collect(Collectors
+                        .toList());
     }
 
-    public Stream<Book> searchByPrice(double price) {
-        Stream<Book> stream;
-        stream = bookList.stream().filter(book -> book.getPrice()<=price);
-        return stream;
+    public List<Book> searchByPrice(double price) {
+        return bookList
+                .stream()
+                .filter(book -> book
+                        .getPrice()<=price)
+                .collect(Collectors
+                        .toList());
     }
 
     public void addBook (Book book) throws IOException {

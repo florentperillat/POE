@@ -38,6 +38,23 @@ title __SHOP's Class Diagram__\n
 
   package  {
     package com.java.shop {
+      class BookRepository {
+          - bookList : List<Book>
+          - uri : String
+          + load()
+          + getAll()
+          + getById()
+          + searchByTitle()
+          + searchByPrice()
+          + addBook()
+          + removeBook()
+      }
+    }
+  }
+  
+
+  package  {
+    package com.java.shop {
       class CD {
           - nbTrack : int
           + CD()
@@ -52,12 +69,27 @@ title __SHOP's Class Diagram__\n
   package  {
     package com.java.shop {
       class Cart {
-          ~ hashset : HashSet<MediaRow>
-          ~ totalPriceTTC : double
+          - cartRowList : HashSet<MediaRow>
+          - totalPriceTTC : double
           + Cart()
           + add()
           + remove()
+          - isMediaExists()
           + getTotalPriceTTC()
+          + validate()
+      }
+    }
+  }
+  
+
+  package  {
+    package com.java.shop {
+      class CartRow {
+          - row : int
+          + getMedia()
+          + setMedia()
+          + add()
+          + remove()
       }
     }
   }
@@ -74,14 +106,6 @@ title __SHOP's Class Diagram__\n
       }
     }
   }
-    package  {
-       package com.java.shop {
-         class Publisher {
-             - name : String
-             + Publisher()
-         }
-       }
-     }
   
 
   package  {
@@ -177,7 +201,7 @@ title __SHOP's Class Diagram__\n
           - title : String
           - price : double
           - genre : String
-          - authorList : ArrayList<Author>
+          - authorList : List<Author>
           - taux : int
           + Media()
           + Media()
@@ -194,6 +218,55 @@ title __SHOP's Class Diagram__\n
 
   package  {
     package com.java.shop {
+      class MediaException {
+          + MediaException()
+          + MediaException()
+          + MediaException()
+      }
+    }
+  }
+  
+
+  package  {
+    abstract class PrintStreamOrWriter {
+        - PrintStreamOrWriter()
+        {abstract} ~ lock()
+        {abstract} ~ println()
+    }
+  }
+  
+
+  package  {
+    class SentinelHolder {
+        {static} + STACK_TRACE_ELEMENT_SENTINEL : StackTraceElement
+        {static} + STACK_TRACE_SENTINEL : StackTraceElement[]
+        - SentinelHolder()
+    }
+  }
+  
+
+  package  {
+    class WrappedPrintStream {
+        - printStream : PrintStream
+        ~ WrappedPrintStream()
+        ~ lock()
+        ~ println()
+    }
+  }
+  
+
+  package  {
+    class WrappedPrintWriter {
+        - printWriter : PrintWriter
+        ~ WrappedPrintWriter()
+        ~ lock()
+        ~ println()
+    }
+  }
+  
+
+  package  {
+    package com.java.shop {
       class MediaRow {
           ~ nbCopies : int
           + MediaRow()
@@ -201,6 +274,7 @@ title __SHOP's Class Diagram__\n
           + add()
           + remove()
           + remove()
+          + getMedia()
       }
     }
   }
@@ -221,16 +295,16 @@ title __SHOP's Class Diagram__\n
   CD -up-|> ICD
   CD -up-|> Media
   Cart -up-|> ICart
+  CartRow o-- Media : media
   DVD -up-|> IDVD
   DVD -up-|> Media
   Media -up-|> IMedia
+  MediaException +-down- PrintStreamOrWriter
+  MediaException +-down- SentinelHolder
+  MediaException +-down- WrappedPrintStream
+  MediaException +-down- WrappedPrintWriter
   MediaRow -up-|> IMediaRow
   MediaRow o-- Media : media
-  Cart o-- MediaRow
-  Media o-- Author
-  Media --> Publisher
-  Publisher o--> Media
-
 
 
 right footer
