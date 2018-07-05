@@ -1,15 +1,13 @@
 package com.java.genetic;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class DNARepository {
 
     private DNA dna;
 
-    public void load(String uri) throws IOException, GeneticException {
+    public void load(String uri) throws IOException, DNAException {
         BufferedReader reader = new BufferedReader(new FileReader("dna.txt"));
         String s = reader.readLine();
         dna = new DNA(s);

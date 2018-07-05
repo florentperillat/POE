@@ -1,17 +1,13 @@
 package com.java.genetic;
 import java.io.*;
-import java.time.DateTimeException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args) {
         try {
-            //DNARepository.generateRandomDNAFile("dna.txt", 10000);
-            Base a = new Base("A");
+/*            //DNARepository.generateRandomDNAFile("dna.txt", 10000);
+            Nucleotide a = new Nucleotide("A");
             System.out.println(a);
             System.out.println(a.getApparie(false));
             DNA dna = new DNA("ATCG");
@@ -22,39 +18,39 @@ public class Main {
             dna = new DNA("GAAAGAGCG");
             rna = dna.transcription(); // CUUUCUCGC
             System.out.println(rna);
-            Ribosome ribosome = new Ribosome();
-            Protein protein = ribosome.translate(rna).get(0); // LSR
+            Ribosome r1 = new Ribosome();
+            Protein protein = r1.translate(rna).get(0); // LSR
             System.out.println(protein);
-
+*/
 
             DNARepository repo = new DNARepository();
             repo.load("dna.txt");
-            dna = repo.getDNA();
+            DNA dna = repo.getDNA();
             System.out.println(dna);
-            rna = dna.transcription();
+            RNA rna = dna.transcription();
             System.out.println(rna);
-            List<Protein> proteinList = ribosome.translate(rna);
+            Ribosome r1 = new Ribosome();
+            List<Protein> proteinList = r1.translate(rna);
             System.out.println(proteinList);
             for (Protein p : proteinList) {
-                if (p.isProtein()) {
-                    System.out.print("Protein: ");
+                if (!p.isProtein()) {
+                    System.out.print("Peptide : ");
                 } else {
-                    System.out.print("Peptide: ");
+                    System.out.print("Protein : ");
                 }
-                for (AminoAcid aa : p.getChain()) {
-                    System.out.print(aa.getTrigram() + "-");
+                for (int i = 0; i<p.getChain().size()-1; i++) {
+                    System.out.print(p.getChain().get(i).getTrigram() + "|");
                 }
-                System.out.println();
+                System.out.println(p.getChain().get(p.getChain().size()-1).getTrigram());
             }
-            System.out.println("Total: " + proteinList.size());
         }
-        catch (GeneticException ex) {
+        catch (DNAException ex) {
             System.out.println(ex);
         }
         catch (IOException ex) {
             ex.printStackTrace();
         }
-
+//
 
     }
 }

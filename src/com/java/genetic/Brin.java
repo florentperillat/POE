@@ -2,19 +2,19 @@ package com.java.genetic;
 
 import java.util.ArrayList;
 
-public abstract class Nucleotid {
+public abstract class Brin {
 
-    private ArrayList<Base> strand = new ArrayList<>();
+    private ArrayList<Nucleotide> strand = new ArrayList<>();
 
     public String toString() {
         String res = "";
-        for(Base b : getStrand()) {
+        for(Nucleotide b : getStrand()) {
             res += b.getSymbol();
         }
         return res;
     }
 
-    public ArrayList<Base> getStrand() {
+    public ArrayList<Nucleotide> getStrand() {
         return strand;
     }
 }

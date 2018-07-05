@@ -11,14 +11,6 @@ title __JAVA POEC's Class Diagram__\n
   
 
   package  {
-    package com.java.genetic {
-      class AminoAcid {
-      }
-    }
-  }
-  
-
-  package  {
     package com.java.shop {
       class Author {
       }
@@ -37,14 +29,6 @@ title __JAVA POEC's Class Diagram__\n
   package  {
     package com.java.bank {
       class BankProgram {
-      }
-    }
-  }
-  
-
-  package  {
-    package com.java.genetic {
-      class Base {
       }
     }
   }
@@ -71,6 +55,14 @@ title __JAVA POEC's Class Diagram__\n
       package com.java.tp1 {
         class BoucleFor {
         }
+      }
+    }
+  }
+  
+
+  package  {
+    package com.java.genetic {
+      abstract class Brin {
       }
     }
   }
@@ -167,6 +159,14 @@ title __JAVA POEC's Class Diagram__\n
   
 
   package  {
+    package com.java.genetic {
+      class Codon {
+      }
+    }
+  }
+  
+
+  package  {
     package com.java.tp {
       class Collections {
       }
@@ -223,6 +223,22 @@ title __JAVA POEC's Class Diagram__\n
       package com.java.tp.dna {
         class DNA {
         }
+      }
+    }
+  }
+  
+
+  package  {
+    package com.java.genetic {
+      class DNAException {
+      }
+    }
+  }
+  
+
+  package  {
+    package com.java.genetic {
+      class DNARepository {
       }
     }
   }
@@ -482,6 +498,14 @@ title __JAVA POEC's Class Diagram__\n
 
   package  {
     package com.java.tp {
+      class NombresPremiersTableau {
+      }
+    }
+  }
+  
+
+  package  {
+    package com.java.tp {
       package com.java.tp1 {
         class NombresPremiersTableau {
         }
@@ -501,8 +525,8 @@ title __JAVA POEC's Class Diagram__\n
   
 
   package  {
-    package com.java.tp {
-      class NombresPremiersTableau {
+    package com.java.genetic {
+      class Nucleotide {
       }
     }
   }
@@ -605,6 +629,14 @@ title __JAVA POEC's Class Diagram__\n
   package  {
     package com.java.geometry {
       class Rectangle {
+      }
+    }
+  }
+  
+
+  package  {
+    package com.java.genetic {
+      class Ribosome {
       }
     }
   }
@@ -732,6 +764,8 @@ title __JAVA POEC's Class Diagram__\n
   Cart -up-|> ICart
   CartRow o-- Media : media
   Conductor -up-|> Employe
+  DNA -up-|> Brin
+  DNARepository o-- DNA : dna
   DVD -up-|> IDVD
   DVD -up-|> Media
   Employe -up-|> Personne
@@ -746,6 +780,7 @@ title __JAVA POEC's Class Diagram__\n
   Nucleotide o-- Nucleotide : complementaire
   Passager -up-|> Personne
   Point3D -up-|> Point
+  RNA -up-|> Brin
   Rectangle o-- Point : origin
   Transaction o-- Account : fromAccount
   Transaction o-- Account : toAccount

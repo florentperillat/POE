@@ -2,14 +2,14 @@ package com.java.genetic;
 
 import java.util.ArrayList;
 
-public class DNA extends Nucleotid {
+public class DNA extends Brin {
 
     public DNA() {
     }
 
     public DNA(String code) {
         for(char c : code.toCharArray()) {
-            Base b = new Base(String.valueOf(c));
+            Nucleotide b = new Nucleotide(String.valueOf(c));
             if(c == 'U') {
                 System.out.println("U is forbidden in DNA");
             }
@@ -18,9 +18,9 @@ public class DNA extends Nucleotid {
     }
 
 
-    public ArrayList<Base> getComplementary() {
-        ArrayList<Base> res = new ArrayList<>();
-        for(Base b : getStrand()) {
+    public ArrayList<Nucleotide> getComplementary() {
+        ArrayList<Nucleotide> res = new ArrayList<>();
+        for(Nucleotide b : getStrand()) {
             res.add(b.getApparie(false));
         }
         return res;
@@ -28,7 +28,7 @@ public class DNA extends Nucleotid {
 
     public RNA transcription() {
         RNA arn = new RNA();
-        for(Base b : getStrand()) {
+        for(Nucleotide b : getStrand()) {
             arn.getStrand().add(b.getApparie(true));
         }
         return arn;

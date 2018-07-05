@@ -2,76 +2,176 @@
 
 title __GENETIC's Class Diagram__\n
 
-  package com.java.genetic {
-      class RNA {
-          + RNA()
-          + translate() : List<AminoAcid>
+  package  {
+    package com.java.genetic {
+      abstract class Brin {
+          - strand : ArrayList<Nucleotide>
+          + toString()
+          + getStrand()
       }
+    }
   }
+  
 
-
-  package com.java.genetic {
-      class AminoAcid {
+  package  {
+    package com.java.genetic {
+      class Codon {
           - symbol : String
           - trigram : String
           - name : String
-          + AminoAcid()
+          + Codon()
           + getSymbol()
           + getTrigram()
           + getName()
           + toString()
+      }
     }
   }
+  
 
+  package  {
+    package com.java.genetic {
+      class DNA {
+          + DNA()
+          + DNA()
+          + getComplementary()
+          + transcription()
+      }
+    }
+  }
+  
 
-  package com.java.genetic {
-      class Base {
+  package  {
+    package com.java.genetic {
+      class DNAException {
+          + DNAException()
+      }
+    }
+  }
+  
+
+  package  {
+    abstract class PrintStreamOrWriter {
+        - PrintStreamOrWriter()
+        {abstract} ~ lock()
+        {abstract} ~ println()
+    }
+  }
+  
+
+  package  {
+    class SentinelHolder {
+        {static} + STACK_TRACE_ELEMENT_SENTINEL : StackTraceElement
+        {static} + STACK_TRACE_SENTINEL : StackTraceElement[]
+        - SentinelHolder()
+    }
+  }
+  
+
+  package  {
+    class WrappedPrintStream {
+        - printStream : PrintStream
+        ~ WrappedPrintStream()
+        ~ lock()
+        ~ println()
+    }
+  }
+  
+
+  package  {
+    class WrappedPrintWriter {
+        - printWriter : PrintWriter
+        ~ WrappedPrintWriter()
+        ~ lock()
+        ~ println()
+    }
+  }
+  
+
+  package  {
+    package com.java.genetic {
+      class DNARepository {
+          + load()
+          + getDNA()
+          {static} + generateRandomDNAFile()
+      }
+    }
+  }
+  
+
+  package  {
+    package com.java.genetic {
+      class Main {
+          {static} + main()
+      }
+    }
+  }
+  
+
+  package  {
+    package com.java.genetic {
+      class Nucleotide {
           - symbol : String
           - name : String
           - familly : String
-          + Base(String symbol)
-          + getApparie() : Base
-    }
-  }
-
-
-  package com.java.genetic {
-      class DNA {
-          + DNA(String code)
-          + DNA()
-          + getComplementary() : List<Base>
-          + transcription() : RNA
-    }
-  }
-
-    package com.java.genetic {
-        abstract class Nucleotid {
-            - strand : List<Base>
-            + toString() : String
+          + getSymbol()
+          + getName()
+          + getFamilly()
+          + Nucleotide()
+          + getApparie()
+          + toString()
       }
     }
+  }
+  
 
-      package com.java.genetic {
-          class Protein {
-            - peptide : List<AminoAcid>
-            + getPeptide() : List<AminoAcid>
+  package  {
+    package com.java.genetic {
+      class Protein {
+          - chain : List<Codon>
+          + getChain()
+          + Protein()
+          + Protein()
+          + setChain()
+          + isProtein()
+          + toString()
+      }
     }
-      package com.java.genetic {
-          class Ribosome {
-            + translate(ARN arn) : List<Protein>
+  }
+  
+
+  package  {
+    package com.java.genetic {
+      class RNA {
+          - codonMap : Map<String, String>
+          + RNA()
+          + translate()
+          + translate()
+      }
     }
-}
+  }
+  
 
-  Base o--> "1" Base : apparie
-  DNA o--> "*" Base : strand
-  DNA o--> "1" RNA : transcription
-  Protein o--> "*" AminoAcid
-  Nucleotid <|-up- DNA
-  Nucleotid <|-up- RNA
-  Ribosome --> "1" RNA
-  Ribosome --> "*" Protein : translate
+  package  {
+    package com.java.genetic {
+      class Ribosome {
+          - codonMap : Map<String, String>
+          + Ribosome()
+          + translate()
+          - cut()
+          - translate()
+      }
+    }
+  }
+  
 
-
+  DNA -up-|> Brin
+  DNAException +-down- PrintStreamOrWriter
+  DNAException +-down- SentinelHolder
+  DNAException +-down- WrappedPrintStream
+  DNAException +-down- WrappedPrintWriter
+  DNARepository o-- DNA : dna
+  RNA -up-|> Brin
 
 
 right footer

@@ -1,12 +1,12 @@
 package com.java.genetic;
 
-public class AminoAcid {
+public class Codon {
 
     private String symbol;
     private String trigram;
     private String name;
 
-    public AminoAcid(String symbol) {
+    public Codon(String symbol) {
         this.symbol = symbol;
         if(symbol.equals("R")) {
             trigram = "Arg";
@@ -97,7 +97,7 @@ public class AminoAcid {
             name = "Glycine";
         }
         else {
-            System.err.println("AminoAcid error");
+            System.err.println("Codon error");
         }
     }
 

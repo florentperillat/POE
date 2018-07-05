@@ -5,19 +5,15 @@ import java.util.List;
 
 public class Protein {
 
-    private List<AminoAcid> chain = new ArrayList<>();
+    private List<Codon> chain = new ArrayList<>();
 
-    public List<AminoAcid> getChain() {
+    public List<Codon> getChain() {
         return chain;
     }
 
     public Protein() {}
 
-    public Protein(List<AminoAcid> chain) {
-        this.chain = chain;
-    }
-
-    public void setChain(List<AminoAcid> chain) {
+    public Protein(List<Codon> chain) {
         this.chain = chain;
     }
 
@@ -27,13 +23,13 @@ public class Protein {
 
     @Override
     public String toString() {
-        String s = "Peptide: ";
+        String s = "Peptide : \"";
         if(isProtein()) {
-            s = "Protein: ";
+            s = "Protein : \"";
         }
-        for(AminoAcid aa : chain) {
-            s+=aa.getSymbol();
+        for(Codon c : chain) {
+            s+=c.getSymbol();
         }
-        return s;
+        return s+"\"";
     }
 }

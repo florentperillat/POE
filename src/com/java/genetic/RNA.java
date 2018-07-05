@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RNA extends Nucleotid {
+public class RNA extends Brin {
 
     private Map<String, String> codonMap = new HashMap<>();
     public RNA() {
@@ -75,29 +75,29 @@ public class RNA extends Nucleotid {
     }
 
 
-    public ArrayList<AminoAcid> translate() {
-        ArrayList<AminoAcid> protein = new ArrayList<>();
+    public ArrayList<Codon> translate() {
+        ArrayList<Codon> protein = new ArrayList<>();
         for(int i = 0;i<getStrand().size();i+=3) {
-            Base base1 = getStrand().get(i);
-            Base base2 = null;
-            Base base3 = null;
+            Nucleotide n1 = getStrand().get(i);
+            Nucleotide n2 = null;
+            Nucleotide n3 = null;
             if(i+1 < getStrand().size()) {
-                base2 = getStrand().get(i+1);
+                n2 = getStrand().get(i+1);
             }
             if(i+2 < getStrand().size()) {
-                base3 = getStrand().get(i+2);
+                n3 = getStrand().get(i+2);
             }
-            if(base3 != null) {
-                AminoAcid aa = translate(base1, base2, base3);
-                protein.add(aa);
+            if(n3 != null) {
+                Codon c = translate(n1, n2, n3);
+                protein.add(c);
             }
         }
         return protein;
     }
 
-    public AminoAcid translate(Base base1, Base base2, Base base3) {
-        String codon = base1.getSymbol()+base2.getSymbol()+base3.getSymbol();
-        AminoAcid aa = new AminoAcid(codonMap.get(codon));
-        return aa;
+    public Codon translate(Nucleotide n1, Nucleotide n2, Nucleotide n3) {
+        String codon = n1.getSymbol()+ n2.getSymbol()+ n3.getSymbol();
+        Codon c = new Codon(codonMap.get(codon));
+        return c;
     }
 }

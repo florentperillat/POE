@@ -1,8 +1,5 @@
 package com.java.genetic;
-import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Ribosome {
 
@@ -75,30 +72,30 @@ public class Ribosome {
         codonMap.put("GGG","G");
     }
 
-    public List<Protein> translate(RNA rna) throws GeneticException {
-        List<AminoAcid> chain = new ArrayList<>();
+    public List<Protein> translate(RNA rna) throws DNAException {
+        List<Codon> chain = new ArrayList<>();
         for(int i = 0;i<rna.getStrand().size();i+=3) {
-            Base base1 = rna.getStrand().get(i);
-            Base base2 = null;
-            Base base3 = null;
+            Nucleotide nucleotide1 = rna.getStrand().get(i);
+            Nucleotide nucleotide2 = null;
+            Nucleotide nucleotide3 = null;
             if(i+1 < rna.getStrand().size()) {
-                base2 = rna.getStrand().get(i+1);
+                nucleotide2 = rna.getStrand().get(i+1);
             }
             if(i+2 < rna.getStrand().size()) {
-                base3 = rna.getStrand().get(i+2);
+                nucleotide3 = rna.getStrand().get(i+2);
             }
-            if(base3 != null) {
-                AminoAcid aa = translate(base1, base2, base3);
+            if(nucleotide3 != null) {
+                Codon aa = translate(nucleotide1, nucleotide2, nucleotide3);
                 chain.add(aa);
             }
         }
         return cut(chain);
     }
 
-    private List<Protein> cut(List<AminoAcid> chain) {
+    private List<Protein> cut(List<Codon> chain) {
         List<Protein> res = new ArrayList<>();
         Protein p = new Protein();
-        for(AminoAcid aa : chain) {
+        for(Codon aa : chain) {
             if(aa.getName().equals("STOP")) {
                 if(p.getChain().size() > 1) {
                     res.add(p);
@@ -115,9 +112,9 @@ public class Ribosome {
         return res;
     }
 
-    private AminoAcid translate(Base base1, Base base2, Base base3) throws GeneticException {
-        String codon = base1.getSymbol()+base2.getSymbol()+base3.getSymbol();
-        AminoAcid aa = new AminoAcid(codonMap.get(codon));
+    private Codon translate(Nucleotide nucleotide1, Nucleotide nucleotide2, Nucleotide nucleotide3) throws DNAException {
+        String codon = nucleotide1.getSymbol()+ nucleotide2.getSymbol()+ nucleotide3.getSymbol();
+        Codon aa = new Codon(codonMap.get(codon));
         return aa;
     }
 }

@@ -1,6 +1,6 @@
 package com.java.genetic;
 
-public class Base {
+public class Nucleotide {
 
     private String symbol;
     private String name;
@@ -14,11 +14,7 @@ public class Base {
         return name;
     }
 
-    public String getFamilly() {
-        return familly;
-    }
-
-    public Base(String symbol) {
+    public Nucleotide(String symbol) {
         this.symbol = symbol;
         if(symbol.equals("A")) {
             name = "Adenine";
@@ -41,31 +37,31 @@ public class Base {
             familly = "Pyrimidine";
         }
         else {
-            System.err.println("Base error "+symbol);
+            System.err.println("Nucleotide error "+symbol);
         }
 
     }
 
-    public Base getApparie(boolean isArn) {
+    public Nucleotide getApparie(boolean isArn) {
         if(symbol.equals("A")) {
             if(isArn) {
-                return new Base("U");
+                return new Nucleotide("U");
             }
             else {
-                return new Base("T");
+                return new Nucleotide("T");
             }
         }
         else if(symbol.equals("T")) {
-            return new Base("A");
+            return new Nucleotide("A");
         }
         else if(symbol.equals("C")) {
-            return new Base("G");
+            return new Nucleotide("G");
         }
         else if(symbol.equals("G")) {
-            return new Base("C");
+            return new Nucleotide("C");
         }
         else if(symbol.equals("U")) {
-            return new Base("A");
+            return new Nucleotide("A");
         }
         else {
             return null;
